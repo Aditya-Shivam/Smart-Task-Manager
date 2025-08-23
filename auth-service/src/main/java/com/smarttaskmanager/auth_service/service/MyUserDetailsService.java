@@ -4,7 +4,6 @@ import com.smarttaskmanager.auth_service.model.User;
 import com.smarttaskmanager.auth_service.model.UserPrincipal;
 import com.smarttaskmanager.auth_service.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ public class MyUserDetailsService implements UserDetailsService {
     UserRepo userRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserPrincipal loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByUsername(username);
         System.out.println(username + "^^^^^^^^^^^");
         System.out.println(userRepo.findAll());
